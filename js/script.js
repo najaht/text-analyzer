@@ -40,16 +40,16 @@ function maskWord(word) {
   return newWord;
 }
 
-// function boldPassage(word, text) {
-//   if (noInputedWord(word, text)) {
-//     return "";
-//   }
+function boldPassage(word, text) {
+  if (noInputedWord(word, text)) {
+    return "";
+  }
 
-//   const regEx = new RegExp(word, "gi")
-//   const boldWord = "<b>" + word + "</b>"
-//   const htmlString = text.replace(regEx, boldWord)
-//   return "<p>" + htmlString +" </p>"
-// }
+  const regEx = new RegExp(word, "gi")
+  const boldWord = "<b>" + word + "</b>"
+  const htmlString = text.replace(regEx, boldWord)
+  return "<p>" + htmlString +" </p>"
+}
 // function formatText(text) {
 
 
