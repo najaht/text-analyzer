@@ -15,16 +15,17 @@
 <body>
   <div class="container">
     <div class="col-md-3">
+      <h1>Text-Analyzer</h1>
       <form id="formOne">
         <label for="sentence">
           <h4> Enter a Sentence here:</h4>
         </label>
-       <textarea name="text" id="input" cols="60" rows="10">i love CODING here at acedu i love coding at coding boot zoinks</textarea>
+       <textarea name="text" id="input" cols="170" rows="10"></textarea>
         <label for="sentence">
           <h5>Search for a word here:</h5>
         </label>
         <input type="text" class="form-control" id="input2">
-        <button type="submit" class="btn btn-danger">Save</button>
+        <button type="submit" class="btn btn-dark">Save</button>
       </form>
     </div>
     <div>
@@ -34,6 +35,11 @@
       <h5>Number of occurence =<span id="display2"></span></h5>
     </div>
 
+    <div id="top-3-words">
+     <h5> Top 3 words are: <span id="common-words"> </span> </h5>
+    </div>
+
+    
     <div>
       <span id="bolded-passage"></span>
     </div>
@@ -42,15 +48,7 @@
       <span id="offensive-word"></span>
     </div>
 
-    <div>
-      <span id="common-words"></span>
-    </div>
 
-
-    <!-- <div class="card">
-      <h4 id="text">Click Here To Analyze your text</h4>
-      <button class="btn btn-dark">Click Here</button>
-    </div> -->
   </div>
 
 

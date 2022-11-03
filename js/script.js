@@ -15,7 +15,7 @@ function wordCounter(text) {
 
 function numberOfOccurencesInText(word, text) {
   if (noInputedWord(word, text)) {
-    return 0;
+    return "";
   }
   const wordArray = text.split(" ")
   let wordCount = 0
@@ -27,65 +27,30 @@ function numberOfOccurencesInText(word, text) {
   return wordCount;
 }
 
-function maskWord(word) {
-  let wordArray = word.split("")
-  let newWord = ""
-  wordArray.forEach(function (element, index) {
-    if (index === 0) {
-      newWord = newWord.concat(element)
-    } else {
-      newWord = newWord.concat("*")
-    }
-  })
-  return newWord;
-}
-
 function boldPassage(word, text) {
   if (noInputedWord(word, text)) {
-    return "";
+    return ""
   }
-
-  const regEx = new RegExp(word, "gi")
+  const regexWord = new RegExp(word, "gi");
   const boldWord = "<b>" + word + "</b>"
-  const htmlString = text.replace(regEx, boldWord)
-  return "<p>" + htmlString +" </p>"
+  const htmlString = text.replace(regexWord, boldWord);
+  return "<p>" + htmlString + "</p>"
 }
-// function formatText(text) {
 
-
-//   let htmlString = "<P>";
-//   let newElement;
-//   let textArray = text.split(" ");
-//   textArray.forEach(function (element, index) {
-
-//     if (element.toLowerCase() === "zoinks" || "muppeteer" || "biffaroni" || "loopdaloop") {
-
-//       newElement = element.replace(word, "<b>" + maskWord(element) + "</b>")
-//     }
-//     else {
-//       newElement = element.replace(word, "<b>" + element + "</b>")
-//     }
-
-
-//     htmlString = htmlString.concat(newElement);
-
-//     if (index !== (textArray.length - 1)) {
-//       htmlString = htmlString.concat(" ")
-//     }
-
-//   });
-//   return htmlString + "</p>"
-// }
-function offensiveWord(word) {
+function offensiveWord(sentence) {
   let htmlStrings = "<p>"
-  let offensiveWord = ["zoinks", "muppeteer", "biffaroni", "loopdaloop"]
-  let wordArray = word.split(" ")
-  wordArray.forEach(function (element) {
+  let offensiveWord = ["zoinks", "muppeteer", "biffaroni", ]
+  let wordArray = sentence.split(" ")
+  wordArray.forEach(function (element, index) {
     offensiveWord.forEach(function (element2) {
       if (element === element2) {
-        htmlStrings = htmlStrings.concat("***" + element + "***");
-      }
+      element = (element.charAt(0) + "*****");
+      }  
     })
+    htmlStrings = htmlStrings.concat(element)
+    if (index !== (wordArray.length - 1)) {
+      htmlStrings = htmlStrings.concat(" ");
+    }
   })
   return htmlStrings + "</p>"
 }
@@ -99,6 +64,7 @@ function threeMostCommon(sentence) {
     if (element.trim() !== "") {
       spaceFilter.push(element);
     }
+
   });
   let html = "<p>"
   let filteredArray = [...new Set(spaceFilter)]
@@ -140,6 +106,7 @@ function noInputedWord() {
   }
   return false;
 }
+
 // User Interface Logic
 $(document).ready(function () {
   $("#formOne").submit(function (event) {
@@ -149,14 +116,13 @@ $(document).ready(function () {
     let sentence = $("#input").val();
     let count = wordCounter(sentence);
     let wordCount = numberOfOccurencesInText(word, sentence)
-    let result3 = boldPassage(word, sentence)
-    let result4 = offensiveWord(word, sentence);
+    let result4 = offensiveWord(sentence);
+    let result3 = boldPassage(word, result4)
     let result5 = threeMostCommon(sentence);
 
     $("#display").text(count);
     $("#display2").text(wordCount);
     $("#bolded-passage").html(result3);
-    $("#offensive-word").html(result4);
     $("#common-words").html(result5);
   })
 })
