@@ -24,7 +24,7 @@ function numberOfOccurencesInText(word, text) {
       wordCount++;
     }
   })
-  return wordCount;
+  // return wordCount;
 }
 
 function boldPassage(word, text) {
