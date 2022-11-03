@@ -24,7 +24,7 @@ function numberOfOccurencesInText(word, text) {
       wordCount++;
     }
   })
-  // return wordCount;
+  return wordCount;
 }
 
 function boldPassage(word, text) {
@@ -39,13 +39,13 @@ function boldPassage(word, text) {
 
 function offensiveWord(sentence) {
   let htmlStrings = "<p>"
-  let offensiveWord = ["zoinks", "muppeteer", "biffaroni", ]
+  let offensiveWord = ["zoinks", "muppeteer", "biffaroni",]
   let wordArray = sentence.split(" ")
   wordArray.forEach(function (element, index) {
     offensiveWord.forEach(function (element2) {
       if (element === element2) {
-      element = (element.charAt(0) + "*****");
-      }  
+        element = (element.charAt(0) + "*****");
+      }
     })
     htmlStrings = htmlStrings.concat(element)
     if (index !== (wordArray.length - 1)) {
