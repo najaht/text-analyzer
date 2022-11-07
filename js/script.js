@@ -124,5 +124,12 @@ $(document).ready(function () {
     $("#display2").text(wordCount);
     $("#bolded-passage").html(result3);
     $("#common-words").html(result5);
+
+
+
+    
+  });
+  $("#refresh").click(function(){
+    location.reload();
   })
 })
